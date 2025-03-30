@@ -1,21 +1,42 @@
 import Button from "./components/Button";
-import { Fragment } from "react/jsx-runtime";
 import Alert from "./components/Alert";
 import { useState } from "react";
+import Message from "./Message";
+import ListGroup from "./components/ListGroup";
 
 function App() {
   const handleClick = function () {
-    console.log("clicked");
     setVisibility(true);
   };
-  let [visible, setVisibility] = useState(false);
+  const [visible, setVisibility] = useState(false);
+
+  const cities = ["New York", "London", "Paris", "Hong Kong", "Tokyo"];
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
   return (
-    <div>
-      {visible && (
-        <Alert onClose={() => setVisibility(false)}>An example alert</Alert>
-      )}
-      <Button onClick={handleClick}>Primary</Button>
-    </div>
+    <>
+      <div>
+        <Message></Message>
+      </div>
+      <div>
+        <ListGroup
+          items={cities}
+          heading={"Cities"}
+          onSelectItem={handleSelectItem}
+        ></ListGroup>
+      </div>
+      <div>
+        {visible && (
+          <Alert onClose={() => setVisibility(false)}>
+            An example alert <span>for beginners</span>
+          </Alert>
+        )}
+        <Button color="primary" onClick={handleClick}>
+          Primary
+        </Button>
+      </div>
+    </>
   );
 }
 

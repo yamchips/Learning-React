@@ -1,16 +1,15 @@
 import React, { ReactNode } from "react";
+// rafce is a shortcut to create an arrow function
 
 interface Props {
+  // if we want to pass an HTML content to it, use ReactNode
   children: ReactNode;
   onClose: () => void;
 }
 
 const Alert = ({ children, onClose }: Props) => {
   return (
-    <div
-      className="alert alert-warning alert-dismissible fade show"
-      role="alert"
-    >
+    <div className="alert alert-primary alert-dismissible">
       {children}
       <button
         type="button"

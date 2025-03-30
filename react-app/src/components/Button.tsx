@@ -1,7 +1,16 @@
 import { Children } from "react";
 
 interface Props {
-  color?: "primary" | "secondary";
+  // ? means optional, union operator sets the possible value
+  color?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "light"
+    | "dark";
   children: string;
   onClick: () => void;
 }

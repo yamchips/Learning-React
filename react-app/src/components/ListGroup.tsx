@@ -1,13 +1,19 @@
 import { useState } from "react";
+import { MouseEvent } from "react";
 
+// TypeScript feature, input of the component
 interface Props {
   items: string[];
   heading: string;
   onSelectItem: (item: string) => void;
 }
 
+// In react, one component can only return one element
 function ListGroup({ items, heading, onSelectItem }: Props) {
-  const [selectedIndex, setIndex] = useState(-1);
+  // let selectedIndex = -1; // this way doesn't work, use state
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  // const handleClick = (e: MouseEvent) => console.log(e);
 
   return (
     <>
@@ -23,8 +29,9 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
             }
             key={item}
             onClick={() => {
-              setIndex(index);
+              setSelectedIndex(index);
               onSelectItem(item);
+              // handleClick(e);
             }}
           >
             {item}
