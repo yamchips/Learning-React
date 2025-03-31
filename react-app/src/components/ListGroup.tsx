@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MouseEvent } from "react";
 
 // TypeScript feature, input of the component
 interface Props {

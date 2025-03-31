@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 // rafce is a shortcut to create an arrow function
 
 interface Props {
