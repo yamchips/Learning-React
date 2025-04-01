@@ -1,0 +1,12 @@
+.truncate {
+    max-width: 50ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.showFull {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
