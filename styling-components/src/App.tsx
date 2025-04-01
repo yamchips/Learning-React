@@ -2,6 +2,7 @@ import "./App.css";
 import ListGroup from "./components/ListGroup/ListGroup";
 import { FaCalendar } from "react-icons/fa";
 import Button from "./components/Button/Button";
+import Like from "./components/Like/Like";
 
 function App() {
   const items = ["London", "Paris", "New York", "Tokyo", "Beijing"];
@@ -15,6 +16,9 @@ function App() {
       </div>
       <div>
         <Button></Button>
+      </div>
+      <div>
+        <Like onClick={() => console.log("clicked")}></Like>
       </div>
     </>
   );
