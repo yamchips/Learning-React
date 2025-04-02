@@ -1,0 +1,8 @@
+1. Create a react app:
+npm create vite@4.1.0
+
+2. Install npm
+npm install
+
+3. Install bootstrap
+npm i bootstrap@5.2.3
