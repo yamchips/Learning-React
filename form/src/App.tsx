@@ -1,13 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/Form";
-import Form2 from "./components/Form2";
-
+import Cart from "./components/Cart";
 function App() {
   return (
     <>
-      <Form></Form>
-      <Form2></Form2>
+      <Cart></Cart>
     </>
   );
 }

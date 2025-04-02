@@ -71,6 +71,7 @@ const Form2 = () => {
           //     setPerson({ ...person, age: e.target.value });
           //   }}
           //   value={person.age}
+          id="age"
           type="number"
           className="form-control"
         />
