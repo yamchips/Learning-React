@@ -8,9 +8,13 @@ const schema = z.object({
     .string()
     .min(3, { message: "Description must be at least 3 characters." }),
   amount: z
-    .number({ invalid_type_error: "Amount filed is required" })
+    .number({ invalid_type_error: "Amount filed is required." })
     .min(1, { message: "Amount must be at least 1." }),
+  category: z
+    .string({ invalid_type_error: "Category is required." })
+    .min(1, { message: "Category is required." }),
 });
+
 type FormData = z.infer<typeof schema>;
 
 const Cart = () => {
@@ -18,13 +22,29 @@ const Cart = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset,
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
-  };
+  const [content, setContent] = useState([
+    {
+      Description: "",
+      Amount: "",
+      Category: "",
+    },
+  ]);
 
-  const [category, setCategory] = useState("");
+  const onSubmit = (data: FieldValues) => {
+    setContent([
+      ...content,
+      {
+        Description: data.description,
+        Amount: "$" + data.amount,
+        Category: data.category,
+      },
+    ]);
+    reset();
+    console.log(content);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -61,18 +81,19 @@ const Cart = () => {
           Category
         </label>
         <select
-          name="category"
+          {...register("category")}
           id="category"
           className="form-select form-select-sm"
           aria-label="Small select example"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">Select a category</option>
           <option value="groceries">Groceries</option>
           <option value="utilities">Utilities</option>
           <option value="entertainment">Entertainment</option>
         </select>
+        {errors.category && (
+          <p className="text-danger">{errors.category.message}</p>
+        )}
       </div>
       <button className="btn btn-primary" type="submit">
         Submit
