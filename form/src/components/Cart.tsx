@@ -17,37 +17,25 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Cart = () => {
+interface Props {
+  onSubmit: (data: FieldValues) => void;
+}
+
+const Cart = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
     reset,
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const [content, setContent] = useState([
-    {
-      Description: "",
-      Amount: "",
-      Category: "",
-    },
-  ]);
-
-  const onSubmit = (data: FieldValues) => {
-    setContent([
-      ...content,
-      {
-        Description: data.description,
-        Amount: "$" + data.amount,
-        Category: data.category,
-      },
-    ]);
-    reset();
-    console.log(content);
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
