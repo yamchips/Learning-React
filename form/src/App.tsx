@@ -22,10 +22,14 @@ function App() {
     setContent([...content, newData]);
   };
 
+  const handleDelete = (index: number) => {
+    setContent((content) => content.filter((_, i) => i !== index));
+  };
+
   return (
     <>
       <Cart onSubmit={onSubmit}></Cart>
-      <Table content={content}></Table>
+      <Table content={content} onDelete={handleDelete}></Table>
     </>
   );
 }
