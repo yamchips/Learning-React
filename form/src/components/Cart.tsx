@@ -72,7 +72,7 @@ const Cart = ({ onSubmit }: Props) => {
           {...register("category")}
           id="category"
           className="form-select form-select-sm"
-          aria-label="Small select example"
+          aria-label="Small select"
         >
           <option value="">Select a category</option>
           <option value="groceries">Groceries</option>
