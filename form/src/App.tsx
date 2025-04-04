@@ -5,12 +5,13 @@ import Table from "./components/Table";
 import { FieldValues } from "react-hook-form";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
 import Display from "./components/Display";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+import { ExpenseFormData } from "./expense-tracker/components/ExpenseForm";
+import Item from "./components/Item";
 
-interface Item {
-  Description: string;
-  Amount: number;
-  Category: string;
-}
+// *****************************************************************************
+// solution part
 
 function App() {
   const [content, setContent] = useState<Item[]>([]);
@@ -37,8 +38,9 @@ function App() {
   const filteredContent = selectedCategory
     ? content.filter((row) => row.Category === selectedCategory)
     : content;
-
+  // ****************************************************************
   // solution
+  const [selectedCat, setSelectedCat] = useState("");
   const [expenses, setExpenses] = useState([
     {
       id: 1,
@@ -50,28 +52,47 @@ function App() {
       id: 2,
       description: "bbb",
       amount: 5,
-      category: "Utilities",
+      category: "Entertainment",
     },
     {
       id: 3,
       description: "cccc",
       amount: 6,
-      category: "Utilities",
+      category: "Groceries",
     },
   ]);
+  const visibleExpenses = selectedCat
+    ? expenses.filter((e) => e.category === selectedCat)
+    : expenses;
+  const handleSubmit = (expense: ExpenseFormData) => {
+    setExpenses([...expenses, { ...expense, id: expenses.length + 1 }]);
+  };
 
   return (
     <>
-      <Cart onSubmit={onSubmit}></Cart>
-      <Display
-        onChange={onChange}
-        selectedCategory={selectedCategory}
-      ></Display>
+      <div className="mb-3">
+        <Cart onSubmit={onSubmit}></Cart>
+      </div>
+      <div className="mb-3">
+        <Display
+          onChange={onChange}
+          selectedCategory={selectedCategory}
+        ></Display>
+      </div>
       <Table content={filteredContent} onDelete={handleDelete}></Table>
-      {/* <ExpenseList
-        expenses={expenses}
+      <p className="fw-bold ">-----Solution-----</p>
+      <div className="mb-3">
+        <ExpenseForm onSubmit={handleSubmit}></ExpenseForm>
+      </div>
+      <div className="mb-3">
+        <ExpenseFilter
+          onSelectedCategory={(category) => setSelectedCat(category)}
+        ></ExpenseFilter>
+      </div>
+      <ExpenseList
+        expenses={visibleExpenses}
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
-      ></ExpenseList> */}
+      ></ExpenseList>
     </>
   );
 }

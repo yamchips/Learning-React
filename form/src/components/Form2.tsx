@@ -44,7 +44,9 @@ const Form2 = () => {
           Name
         </label>
         <input
-          {...register("name")} //, { required: true, minLength: 3 }
+          {...register("name")}
+          // register automatically handles name, onChange and value field
+          //, { required: true, minLength: 3 }
           //   onChange={(e) => {
           //     setPerson({ ...person, name: e.target.value });
           //   }}

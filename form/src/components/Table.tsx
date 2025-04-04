@@ -1,8 +1,4 @@
-interface Item {
-  Description: string;
-  Amount: number;
-  Category: string;
-}
+import Item from "./Item";
 
 interface Props {
   content: Item[];
