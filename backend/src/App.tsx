@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css";
 import ProductList from "./components/ProductList";
 import userService, { User } from "./services/user-service";
 import useUsers from "./hooks/useUsers";
