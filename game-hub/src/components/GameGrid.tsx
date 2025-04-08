@@ -6,7 +6,7 @@ import GameCardContainer from "./GameCardContainer";
 
 // components should be primarily for returning mark up and handling user interactions at high level
 const GameGrid = () => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -23,7 +23,7 @@ const GameGrid = () => {
               <GameCardSkeleton key={s} />
             </GameCardContainer>
           ))}
-        {games.map((game) => (
+        {data.map((game) => (
           <GameCardContainer>
             <GameCard game={game} key={game.id}></GameCard>
           </GameCardContainer>
