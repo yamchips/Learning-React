@@ -1,4 +1,4 @@
-# [Game Hub](https://game-hub-nine-brown.vercel.app/)
+# [Game Hub](https://game-hub-new-sigma.vercel.app/)
 
 **Game Hub** is a responsive React app that fetches game data from the [RAWG](https://rawg.io/apidocs) API. Built with Chakra UI, it supports full-text search, genre/platform filtering, sort options, and dark/light theme switching. It uses a modular component architecture, reusable data-fetching hooks, and performance optimizations like static genre data.
 
